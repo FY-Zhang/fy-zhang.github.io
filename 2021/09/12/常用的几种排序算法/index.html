@@ -16,18 +16,20 @@
   <meta name="description" content="">
   <meta name="author" content="峰源">
   <meta name="keywords" content="">
-  <meta name="description" content="1、冒泡排序（Bubble Sort）2、插入排序（Insertion Sort）3、选择排序（Select Sort）4、归并排序（Merge Sort）5、快速排序（Quick Sort）6、堆排序（Heap Sort）7、桶排序（Bucket Sort）8、希尔排序（Shell Sort）">
+  <meta name="description" content="1、冒泡排序（Bubble Sort）2、插入排序（Insertion Sort）插入排序是从第二个数开始，向前找到属于它的位置，然后插进去，完成后，再从下一个数开始向前找，直到找完最后一个数。  123456789101112131415161718192021#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;void insertSort(in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用的几种排序算法">
 <meta property="og:url" content="https://fy-zhang.github.io/2021/09/12/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="FY&#39;s Blog">
-<meta property="og:description" content="1、冒泡排序（Bubble Sort）2、插入排序（Insertion Sort）3、选择排序（Select Sort）4、归并排序（Merge Sort）5、快速排序（Quick Sort）6、堆排序（Heap Sort）7、桶排序（Bucket Sort）8、希尔排序（Shell Sort）">
+<meta property="og:description" content="1、冒泡排序（Bubble Sort）2、插入排序（Insertion Sort）插入排序是从第二个数开始，向前找到属于它的位置，然后插进去，完成后，再从下一个数开始向前找，直到找完最后一个数。  123456789101112131415161718192021#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;void insertSort(in">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/09/12/fZWtqFrmNVdChU5.gif">
 <meta property="article:published_time" content="2021-09-12T04:35:35.000Z">
-<meta property="article:modified_time" content="2021-09-12T06:35:08.084Z">
+<meta property="article:modified_time" content="2021-09-12T07:21:45.081Z">
 <meta property="article:author" content="Fengyuan Zhang">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/12/fZWtqFrmNVdChU5.gif">
   
   <title>常用的几种排序算法 - FY&#39;s Blog</title>
 
@@ -202,7 +204,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      140 字
+      662 字
     </span>
   
 
@@ -211,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      2 分钟
     </span>
   
 
@@ -243,7 +245,13 @@
             <h1 style="display: none">常用的几种排序算法</h1>
             
             <div class="markdown-body">
-              <h1 id="1、冒泡排序（Bubble-Sort）"><a href="#1、冒泡排序（Bubble-Sort）" class="headerlink" title="1、冒泡排序（Bubble Sort）"></a>1、冒泡排序（Bubble Sort）</h1><h1 id="2、插入排序（Insertion-Sort）"><a href="#2、插入排序（Insertion-Sort）" class="headerlink" title="2、插入排序（Insertion Sort）"></a>2、插入排序（Insertion Sort）</h1><h1 id="3、选择排序（Select-Sort）"><a href="#3、选择排序（Select-Sort）" class="headerlink" title="3、选择排序（Select Sort）"></a>3、选择排序（Select Sort）</h1><h1 id="4、归并排序（Merge-Sort）"><a href="#4、归并排序（Merge-Sort）" class="headerlink" title="4、归并排序（Merge Sort）"></a>4、归并排序（Merge Sort）</h1><h1 id="5、快速排序（Quick-Sort）"><a href="#5、快速排序（Quick-Sort）" class="headerlink" title="5、快速排序（Quick Sort）"></a>5、快速排序（Quick Sort）</h1><h1 id="6、堆排序（Heap-Sort）"><a href="#6、堆排序（Heap-Sort）" class="headerlink" title="6、堆排序（Heap Sort）"></a>6、堆排序（Heap Sort）</h1><h1 id="7、桶排序（Bucket-Sort）"><a href="#7、桶排序（Bucket-Sort）" class="headerlink" title="7、桶排序（Bucket Sort）"></a>7、桶排序（Bucket Sort）</h1><h1 id="8、希尔排序（Shell-Sort）"><a href="#8、希尔排序（Shell-Sort）" class="headerlink" title="8、希尔排序（Shell Sort）"></a>8、希尔排序（Shell Sort）</h1>
+              <h1 id="1、冒泡排序（Bubble-Sort）"><a href="#1、冒泡排序（Bubble-Sort）" class="headerlink" title="1、冒泡排序（Bubble Sort）"></a>1、冒泡排序（Bubble Sort）</h1><h1 id="2、插入排序（Insertion-Sort）"><a href="#2、插入排序（Insertion-Sort）" class="headerlink" title="2、插入排序（Insertion Sort）"></a>2、插入排序（Insertion Sort）</h1><p>插入排序是从第二个数开始，向前找到属于它的位置，然后插进去，完成后，再从下一个数开始向前找，直到找完最后一个数。</p>
+<p><img src="https://i.loli.net/2021/09/12/fZWtqFrmNVdChU5.gif" srcset="/img/loading.gif" lazyload alt="插入排序"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[], <span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> i, j, tmp;<br>	<span class="hljs-keyword">for</span>(i = <span class="hljs-number">1</span>;i &lt; num;i++) &#123;<br>		tmp = arr[i];	<span class="hljs-comment">// 要执行插入操作的数</span><br>		<span class="hljs-keyword">for</span>(j = i;j &gt; <span class="hljs-number">0</span> &amp;&amp; tmp &lt; arr[j<span class="hljs-number">-1</span>];j--)<br>			arr[j] = arr[j<span class="hljs-number">-1</span>];	<span class="hljs-comment">// 若数大于 tmp，则向后移一位</span><br>		arr[j] = tmp;	<span class="hljs-comment">// 将 tmp 填到空出的位置上</span><br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> arr[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">24</span>,<span class="hljs-number">15</span>,<span class="hljs-number">2</span>,<span class="hljs-number">75</span>,<span class="hljs-number">4</span>,<span class="hljs-number">97</span>,<span class="hljs-number">66</span>,<span class="hljs-number">23</span>,<span class="hljs-number">10</span>,<span class="hljs-number">46</span>&#125;;<br>	<span class="hljs-built_in">insertSort</span>(arr, <span class="hljs-number">10</span>);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">10</span>;i++)<br>		<span class="hljs-built_in">printf</span>((i == <span class="hljs-number">9</span>)?<span class="hljs-string">&quot;%d\n&quot;</span>:<span class="hljs-string">&quot;%d &quot;</span>, arr[i]);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="3、选择排序（Select-Sort）"><a href="#3、选择排序（Select-Sort）" class="headerlink" title="3、选择排序（Select Sort）"></a>3、选择排序（Select Sort）</h1><h1 id="4、归并排序（Merge-Sort）"><a href="#4、归并排序（Merge-Sort）" class="headerlink" title="4、归并排序（Merge Sort）"></a>4、归并排序（Merge Sort）</h1><h1 id="5、快速排序（Quick-Sort）"><a href="#5、快速排序（Quick-Sort）" class="headerlink" title="5、快速排序（Quick Sort）"></a>5、快速排序（Quick Sort）</h1><h1 id="6、堆排序（Heap-Sort）"><a href="#6、堆排序（Heap-Sort）" class="headerlink" title="6、堆排序（Heap Sort）"></a>6、堆排序（Heap Sort）</h1><h1 id="7、桶排序（Bucket-Sort）"><a href="#7、桶排序（Bucket-Sort）" class="headerlink" title="7、桶排序（Bucket Sort）"></a>7、桶排序（Bucket Sort）</h1><h1 id="8、希尔排序（Shell-Sort）"><a href="#8、希尔排序（Shell-Sort）" class="headerlink" title="8、希尔排序（Shell Sort）"></a>8、希尔排序（Shell Sort）</h1>
             </div>
             <hr>
             <div>
