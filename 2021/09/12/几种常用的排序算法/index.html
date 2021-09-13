@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://z3.ax1x.com/2021/09/12/498WXn.gif">
 <meta property="og:image" content="https://i.loli.net/2021/09/12/fZWtqFrmNVdChU5.gif">
 <meta property="article:published_time" content="2021-09-12T04:35:35.000Z">
-<meta property="article:modified_time" content="2021-09-12T13:17:33.418Z">
+<meta property="article:modified_time" content="2021-09-13T07:20:08.307Z">
 <meta property="article:author" content="Fengyuan Zhang">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="C++">
@@ -206,7 +206,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      2k 字
     </span>
   
 
@@ -215,7 +215,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      6 分钟
     </span>
   
 
@@ -259,7 +259,12 @@
 
 
 
-<h1 id="3、选择排序（Select-Sort）"><a href="#3、选择排序（Select-Sort）" class="headerlink" title="3、选择排序（Select Sort）"></a>3、选择排序（Select Sort）</h1><h1 id="4、归并排序（Merge-Sort）"><a href="#4、归并排序（Merge-Sort）" class="headerlink" title="4、归并排序（Merge Sort）"></a>4、归并排序（Merge Sort）</h1><h1 id="5、快速排序（Quick-Sort）"><a href="#5、快速排序（Quick-Sort）" class="headerlink" title="5、快速排序（Quick Sort）"></a>5、快速排序（Quick Sort）</h1><h1 id="6、堆排序（Heap-Sort）"><a href="#6、堆排序（Heap-Sort）" class="headerlink" title="6、堆排序（Heap Sort）"></a>6、堆排序（Heap Sort）</h1><h1 id="7、桶排序（Bucket-Sort）"><a href="#7、桶排序（Bucket-Sort）" class="headerlink" title="7、桶排序（Bucket Sort）"></a>7、桶排序（Bucket Sort）</h1><h1 id="8、希尔排序（Shell-Sort）"><a href="#8、希尔排序（Shell-Sort）" class="headerlink" title="8、希尔排序（Shell Sort）"></a>8、希尔排序（Shell Sort）</h1>
+<h1 id="3、选择排序（Select-Sort）"><a href="#3、选择排序（Select-Sort）" class="headerlink" title="3、选择排序（Select Sort）"></a>3、选择排序（Select Sort）</h1><h1 id="4、归并排序（Merge-Sort）"><a href="#4、归并排序（Merge-Sort）" class="headerlink" title="4、归并排序（Merge Sort）"></a>4、归并排序（Merge Sort）</h1><h1 id="5、快速排序（Quick-Sort）"><a href="#5、快速排序（Quick-Sort）" class="headerlink" title="5、快速排序（Quick Sort）"></a>5、快速排序（Quick Sort）</h1><p>快速排序是以一个元素为基准，小的元素放左边，大的放右边，然后再用递归分别将左右两边的范围慢慢缩小。基准可以是任意一个元素，但为了防止遇到最坏的情况（比如每次都选最小或最大的元素作为基准），所以一般随机取一个元素。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[], <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> mid = <span class="hljs-built_in">rand</span>()%(right-left+<span class="hljs-number">1</span>)+left;   <span class="hljs-comment">// 取一个随机数</span><br>    <span class="hljs-built_in">swap</span>(arr[left], arr[mid]);  <span class="hljs-comment">// 将随机取出来的元素和最左边的元素交换</span><br>    mid = arr[left];<br>    <span class="hljs-keyword">while</span>(left &lt; right) &#123;<br>        <span class="hljs-keyword">while</span>(left &lt; right &amp;&amp; arr[right] &gt;= mid)<br>            right--;<br>        arr[left] = arr[right]; <span class="hljs-comment">// 先用右边的元素覆盖左边，因为左边第一个元素有记录</span><br>        <span class="hljs-keyword">while</span>(left &lt; right &amp;&amp; arr[left] &lt;= mid)<br>            left++;<br>        arr[right] = arr[left];<br>    &#125;<br>    arr[left] = mid;<br>    <span class="hljs-keyword">return</span> left;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[], <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(left &gt;= right)<br>        <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">int</span> mid = <span class="hljs-built_in">sort</span>(arr, left, right);<br>    <span class="hljs-built_in">quickSort</span>(arr, left, mid<span class="hljs-number">-1</span>);<br>    <span class="hljs-built_in">quickSort</span>(arr, mid+<span class="hljs-number">1</span>, right);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> arr[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">24</span>,<span class="hljs-number">15</span>,<span class="hljs-number">2</span>,<span class="hljs-number">75</span>,<span class="hljs-number">4</span>,<span class="hljs-number">97</span>,<span class="hljs-number">66</span>,<span class="hljs-number">23</span>,<span class="hljs-number">10</span>,<span class="hljs-number">46</span>&#125;;<br>	<span class="hljs-built_in">quickSort</span>(arr, <span class="hljs-number">0</span>, <span class="hljs-number">9</span>);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">10</span>;i++)<br>		<span class="hljs-built_in">printf</span>((i == <span class="hljs-number">9</span>)?<span class="hljs-string">&quot;%d\n&quot;</span>:<span class="hljs-string">&quot;%d &quot;</span>, arr[i]);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="6、堆排序（Heap-Sort）"><a href="#6、堆排序（Heap-Sort）" class="headerlink" title="6、堆排序（Heap Sort）"></a>6、堆排序（Heap Sort）</h1><h1 id="7、桶排序（Bucket-Sort）"><a href="#7、桶排序（Bucket-Sort）" class="headerlink" title="7、桶排序（Bucket Sort）"></a>7、桶排序（Bucket Sort）</h1><h1 id="8、希尔排序（Shell-Sort）"><a href="#8、希尔排序（Shell-Sort）" class="headerlink" title="8、希尔排序（Shell Sort）"></a>8、希尔排序（Shell Sort）</h1>
             </div>
             <hr>
             <div>
