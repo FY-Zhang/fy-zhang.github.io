@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/09/14/Jv4wASRkCMLc6dW.png">
 <meta property="og:image" content="https://i.loli.net/2021/09/14/pzrCJBvWZnI6x5b.png">
 <meta property="article:published_time" content="2021-09-14T07:43:10.000Z">
-<meta property="article:modified_time" content="2021-09-14T13:38:44.967Z">
+<meta property="article:modified_time" content="2021-09-15T02:34:49.044Z">
 <meta property="article:author" content="Fengyuan Zhang">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="动态规划">
@@ -206,7 +206,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      641 字
+      1.2k 字
     </span>
   
 
@@ -215,7 +215,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      4 分钟
     </span>
   
 
@@ -257,9 +257,20 @@
 <p>示例 2：</p>
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">输入：height = <span class="hljs-string">[4,2,0,3,2,5]</span><br>输出：<span class="hljs-number">9</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><img src="https://i.loli.net/2021/09/14/pzrCJBvWZnI6x5b.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; height)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> n = height.<span class="hljs-built_in">size</span>(), sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">leftMax</span><span class="hljs-params">(n)</span>, <span class="hljs-title">rightMax</span><span class="hljs-params">(n)</span></span>;<br>        leftMax[<span class="hljs-number">0</span>] = height[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i &lt; n;i++)<br>            leftMax[i] = <span class="hljs-built_in">max</span>(leftMax[i<span class="hljs-number">-1</span>], height[i]);<br>        rightMax[n<span class="hljs-number">-1</span>] = height[n<span class="hljs-number">-1</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n<span class="hljs-number">-2</span>;i &gt;= <span class="hljs-number">0</span>;i--)<br>            rightMax[i] = <span class="hljs-built_in">max</span>(rightMax[i+<span class="hljs-number">1</span>], height[i]);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>            sum += <span class="hljs-built_in">min</span>(leftMax[i], rightMax[i]) - height[i];<br>        <span class="hljs-keyword">return</span> sum;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="方法一：动态规划"><a href="#方法一：动态规划" class="headerlink" title="方法一：动态规划"></a>方法一：动态规划</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="https://i.loli.net/2021/09/14/pzrCJBvWZnI6x5b.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; height)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> n = height.<span class="hljs-built_in">size</span>(), sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">leftMax</span><span class="hljs-params">(n)</span>, <span class="hljs-title">rightMax</span><span class="hljs-params">(n)</span></span>;<br>        leftMax[<span class="hljs-number">0</span>] = height[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i &lt; n;i++)<br>            leftMax[i] = <span class="hljs-built_in">max</span>(leftMax[i<span class="hljs-number">-1</span>], height[i]);<br>        rightMax[n<span class="hljs-number">-1</span>] = height[n<span class="hljs-number">-1</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n<span class="hljs-number">-2</span>;i &gt;= <span class="hljs-number">0</span>;i--)<br>            rightMax[i] = <span class="hljs-built_in">max</span>(rightMax[i+<span class="hljs-number">1</span>], height[i]);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<br>            sum += <span class="hljs-built_in">min</span>(leftMax[i], rightMax[i]) - height[i];<br>        <span class="hljs-keyword">return</span> sum;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>时间复杂度：O(<em>n</em>)。遍历 3 次数组，但没有嵌套 for 循环。</li>
+<li>空间复杂度：O(<em>n</em>)。需要两个额外的长度为 n 的数组。</li>
+</ul>
+<h2 id="方法二：双指针"><a href="#方法二：双指针" class="headerlink" title="方法二：双指针"></a>方法二：双指针</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>设两个指针，一个从左往右，另一个从右往左，然后比较两者大小。如果左边比右边小，则说明从这一格开始往右的水的高度都由左边最高的柱子控制，直到左边有柱子比右边的高为止，反之亦然。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; height)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>, right = height.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>, maxLeft = <span class="hljs-number">0</span>, maxRight = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(left &lt; right) &#123;<br>            maxLeft = <span class="hljs-built_in">max</span>(maxLeft, height[left]);<br>            maxRight = <span class="hljs-built_in">max</span>(maxRight, height[right]);<br>            <span class="hljs-keyword">if</span>(height[left] &lt; height[right])<br>                sum += maxLeft - height[left++];<br>            <span class="hljs-keyword">else</span><br>                sum += maxRight - height[right--];<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>时间复杂度：O(<em>n</em>)。只有一个 while 循环，左右指针一共移动了 n 次。</li>
+<li>空间复杂度：O(n)。只需要额外的常数空间。</li>
+</ul>
 
             </div>
             <hr>
